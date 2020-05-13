@@ -83,9 +83,11 @@ def query():
         ac = request.form['ac']
     except:
         ac = "off"
-
-    table = passwd_table(nmb,ac)
-    return table.query(passwd)
+    if (nmb=="off" and ac=="off") == False:
+        table = passwd_table(nmb,ac)
+        return table.query(passwd)
+    else:
+        return "错误：选项至少要选一个"
     # return repr(nmb)
 
 
